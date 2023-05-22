@@ -6,6 +6,7 @@ from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import logging
+from src.components.data_transformation import DataTransformer, DataTransformationConfig
 
 @dataclass
 class DataIngestionCongig:
@@ -41,4 +42,6 @@ class DataIngestion:
         
 if __name__== "__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+    data_transformer= DataTransformer()
+    data_transformer.initiate_data_transformation(train_data, test_data)
